@@ -4,8 +4,9 @@
 'use strict';
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 let env = process.env.NODE_ENV || 'development';
-
+const devMode = env === 'development';
 module.exports = {
     module: {
         rules: [
@@ -23,6 +24,7 @@ module.exports = {
             {
                 test: /\.(css|scss)(\?.*)?$/,
                 use: [
+                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader'
                     },
@@ -40,6 +42,10 @@ module.exports = {
         fs: 'empty'
     },
     plugins: [
+        new MiniCssExtractPlugin({
+            filename: devMode ? '[name].css' : '[name].[hash].css',
+            chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
+        }),
         new CleanWebpackPlugin(['dist']),
         new webpack.DefinePlugin({
             'process.env': {
