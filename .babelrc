@@ -1,0 +1,13 @@
+{
+  "presets": [
+    "@babel/react",
+    "@babel/preset-env"
+  ],
+  "ignore": [
+    "node_modules/**",
+    "dist"
+  ],
+  "plugins": [
+    "@babel/plugin-transform-runtime"
+  ]
+}
