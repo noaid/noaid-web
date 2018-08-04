@@ -24,6 +24,7 @@
     "dist"
   ],
   "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
     "@babel/plugin-syntax-optional-chaining",
     "@babel/plugin-proposal-do-expressions",
     "@babel/plugin-proposal-object-rest-spread",

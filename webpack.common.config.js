@@ -2,6 +2,7 @@
  * Created by yeanzhi on 16/7/19.
  */
 'use strict';
+const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -33,6 +34,9 @@ module.exports = {
                     },
                     {
                         loader: 'sass-loader'
+                    },
+                    {
+                        loader: path.join(__dirname, './add-commonscss-loader')
                     }
                 ]
             }
