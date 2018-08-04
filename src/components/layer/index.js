@@ -12,6 +12,7 @@ export default class Layer extends Component {
     static defaultProps = {
         style: {},
         className: '',
+        outAreaClosable: true,
         container: layerClass
     };
 

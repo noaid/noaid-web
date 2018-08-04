@@ -12,7 +12,9 @@ const StartMenu = loadComponent(
     import(/* webpackChunkName: "StartMenu" */ '../startMenu/index.js')
 );
 import { connect } from 'rabjs';
-@connect(() => ({}))
+@connect((state) => ({
+    startMenuOpen: state.startMenu.open
+}))
 export default class Taskbar extends Component {
     toggleStartMenu = () => {
         this.props.dispatch({ type: 'startMenu.toggle' });
@@ -20,7 +22,8 @@ export default class Taskbar extends Component {
     render() {
         return (
             <div className="taskbar-container">
-                <StartMenu />
+                {this.props.startMenuOpen && <StartMenu />}
+
                 <div className="taskbar-left">
                     <TaskbarItem icon="start" onClick={this.toggleStartMenu} />
                 </div>
