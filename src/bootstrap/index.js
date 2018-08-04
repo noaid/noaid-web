@@ -16,6 +16,7 @@ import WrapContainer from '../components/wrap';
 const Desktop = loadComponent(
     import(/* webpackChunkName: "desktop" */ '../modules/desktop/index.js')
 );
+const Login = loadComponent(import(/* webpackChunkName: "login" */ '../modules/login/index.js'));
 export default class BootStrap {
     static getSingleton() {
         return globalSingleton;
@@ -38,6 +39,7 @@ export default class BootStrap {
                 <Router history={history}>
                     <WrapContainer>
                         <Switch>
+                            <Route path="/login" component={Login} />
                             <Route path="/" component={Desktop} />
                         </Switch>
                     </WrapContainer>
